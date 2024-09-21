@@ -1,0 +1,21 @@
+<h1>Log In</h1>
+
+<%= form_with(url: login_path) do |f| %>
+  <% if flash[:alert] %>
+    <p><%= flash[:alert] %></p>
+  <% end %>
+
+  <div>
+    <%= f.label :nickname %><br>
+    <%= f.text_field :nickname, name: 'session[nickname]' %>
+  </div>
+
+  <div>
+    <%= f.label :password %><br>
+    <%= f.password_field :password, name: 'session[password]' %>
+  </div>
+
+  <div>
+    <%= f.submit "Log In" %>
+  </div>
+<% end %>
