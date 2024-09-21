@@ -9,6 +9,7 @@ class ChatsController < ApplicationController
 
   # GET /chats/1 or /chats/1.json
   def show
+    @message = Message.new
   end
 
   # GET /chats/new
@@ -59,13 +60,14 @@ class ChatsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_chat
-      @chat = Chat.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def chat_params
-      params.require(:chat).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_chat
+    @chat = Chat.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def chat_params
+    params.require(:chat).permit(:name)
+  end
 end

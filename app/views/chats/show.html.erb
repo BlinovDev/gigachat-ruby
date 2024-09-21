@@ -1,10 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
+<%= turbo_stream_from @chat %>
+
 <%= render @chat %>
 
-<div>
-  <%= link_to "Edit this chat", edit_chat_path(@chat) %> |
-  <%= link_to "Back to chats", chats_path %>
-
-  <%= button_to "Destroy this chat", @chat, method: :delete %>
+<div id="messages">
+  <%= render @chat.messages %>
 </div>
+
+<%= render "messages/form", message: @message, chat: @chat %>
