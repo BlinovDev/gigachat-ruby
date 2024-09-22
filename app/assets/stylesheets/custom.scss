@@ -1,0 +1,79 @@
+// Import Bootstrap's SCSS
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+
+/* Chat container styles */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 95vh;
+  //max-width: 800px;
+  margin: 0 auto;
+  background-color: #f3e6ff; /* light violet background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header {
+  background-color: #d4b3ff;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 1.5em;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat message area styles */
+.chat-messages {
+  flex: 1;
+  padding: 10px 20px;  /* Adjust padding to match the alignment */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto; /* Enable scrolling */
+  background-color: #f8f3ff;
+}
+
+/* Scroll to bottom automatically */
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background-color: #c2a3f0;
+  border-radius: 10px;
+}
+
+/* Styles for own messages (right aligned, darker tone) */
+.own-message {
+  align-self: flex-end;
+  background-color: #b299e5; /* darker violet tone for own messages */
+  color: white;
+  padding: 10px 15px;
+  border-radius: 15px 15px 0 15px;
+  max-width: 60%;
+  word-wrap: break-word;
+  font-size: 1em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for other people's messages (left aligned) */
+.other-person-message {
+  align-self: flex-start;
+  background-color: #d8bfff; /* light violet for other person */
+  color: #4a4a4a; /* dark text for readability */
+  padding: 10px 15px;
+  border-radius: 15px 15px 15px 0;
+  max-width: 60%;
+  word-wrap: break-word;
+  font-size: 1em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+///* Input section */
+.chat-input {
+  display: flex;
+  padding: 15px;
+  background-color: #e4d0fc; /* matching header color */
+  border-top: 1px solid #c2a3f0;
+}
