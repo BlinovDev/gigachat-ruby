@@ -1,24 +1,19 @@
-# README
+# gigachat-ruby
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
 
-Things you may want to cover:
+Its kind of dev sandbox to have better understanding of Turbo and Stimulus work with Rails.
 
-* Ruby version
+## TODO list
 
-* System dependencies
+-[ ] Fix ghost messages on message send;
+-[ ] Fix message input after send;
+-[ ] Beautify Chats page; 
+-[ ] Beautify Account page;
+-[ ] Fix alerts(now its standard, should be something fit too app style);
+-[ ] Develop chat permissions with invitation to chat logic;
+-[ ] Develop different style of Chat and messages for chats with two and with many people;
 
-* Configuration
+## Database config
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Deploy instructions

@@ -1,11 +1,15 @@
-<%= turbo_stream_from @chat %>
-
 <div class="chat-container">
-  <%= render @chat %>
+  <%= turbo_stream_from @chat %>
 
-  <div class="chat-messages">
-    <%= render @chat.messages %>
+  <div class="chat-header">
+    <%= @chat.name %>
   </div>
 
-  <%= render "messages/form", message: @message, chat: @chat %>
+  <div id="messages" class="chat-messages">
+    <%= render @chat.messages.order(:created_at) %>
+  </div>
+
+  <div id="new_message">
+    <%= render "messages/form", message: @message, chat: @chat %>
+  </div>
 </div>

@@ -12,23 +12,31 @@
   <link rel="manifest" href="/manifest.json">
   <link rel="icon" href="/icon.png" type="image/png">
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/icon.png">
+  <link rel="apple-touch-icon" href="image/gigachad.png">
 
   <%= stylesheet_link_tag "application.bootstrap", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
 </head>
 
 <body>
-<div id="main-block" style="width: 65%; margin: 0 auto;">
-  <nav>
-    <% if logged_in? %>
-      <%= link_to 'Profile', current_user %> |
-      <%= link_to "Chats", chats_path %> |
-      <%= link_to 'Logout', logout_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-    <% else %>
-      <%= link_to 'Sign Up', signup_path %> |
-      <%= link_to 'Login', login_path %>
-    <% end %>
+<div id="main-block" class="main-app-block">
+  <nav class="navbar">
+    <div class="logo-container">
+      <%= link_to image_tag('Gigachad.png', alt: 'Gigachat Logo', class: 'logo'), chats_path %>
+      <div class="logo-text">Gigachat</div>
+    </div>
+
+    <!-- Navigation links aligned to the right -->
+    <div class="nav-links">
+      <% if logged_in? %>
+        <%= link_to 'Profile', current_user %>
+        <%= link_to "Chats", chats_path %>
+        <%= link_to 'Logout', logout_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+      <% else %>
+        <%= link_to 'Sign Up', signup_path %>
+        <%= link_to 'Login', login_path %>
+      <% end %>
+    </div>
   </nav>
 
   <%= yield %>

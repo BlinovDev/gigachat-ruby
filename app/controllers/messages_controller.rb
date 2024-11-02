@@ -2,15 +2,6 @@ class MessagesController < ApplicationController
   before_action :require_login
   before_action :set_message, only: %i[ show edit update destroy ]
 
-  # GET /messages or /messages.json
-  # def index
-  #   @messages = Message.all
-  # end
-
-  # GET /messages/1 or /messages/1.json
-  # def show
-  # end
-
   # GET /messages/new
   def new
     @message = Message.new
@@ -22,19 +13,26 @@ class MessagesController < ApplicationController
 
   # POST /messages or /messages.json
   def create
-    @chat = Chat.find(params[:chat_id].to_i)
-    @message = Message.new(message_params.merge(user_id: current_user.id, chat_id: @chat.id))
+    @chat = Chat.find(params[:chat_id])
+    @message = @chat.messages.new(message_params)
+    @message.user = current_user
 
-    if @message.save
-      # Broadcast the message using Turbo Streams
-      respond_to do |format|
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.append('messages', partial: 'messages/message', locals: { message: @message })
-        end
-        format.html { redirect_to @chat }
+    respond_to do |format|
+      if @message.save
+        # Broadcast the message to all subscribers of this chat
+        @message.broadcast_append_to @chat,
+                                      target: 'messages',
+                                      partial: "messages/message",
+                                      locals: { message: @message }
+
+        format.turbo_stream
+
+        format.html { redirect_to @chat, notice: "Message was successfully created." }
+        format.json { render :show, status: :created, location: @message }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @message.errors, status: :unprocessable_entity }
       end
-    else
-      render 'chats/show'
     end
   end
 
