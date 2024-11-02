@@ -25,8 +25,7 @@ class MessagesController < ApplicationController
                                       partial: "messages/message",
                                       locals: { message: @message }
 
-        format.turbo_stream
-
+        # Re-render page for sender
         format.html { redirect_to @chat, notice: "Message was successfully created." }
         format.json { render :show, status: :created, location: @message }
       else
