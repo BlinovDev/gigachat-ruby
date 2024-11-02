@@ -1,8 +1,10 @@
-<%= form_with(model: message, data: { turbo_frame: "messages", action: "turbo:submit-end->reset-form#clear" }, id: "new_message_form") do |form| %>
+<%= form_with(model: [@chat, @message], remote: true) do |form| %>
   <%= hidden_field_tag :chat_id, @chat.id %>
 
-  <div>
-    <%= form.text_field :content, id: "message_content" %>
-    <%= form.submit %>
+  <div class="chat-input">
+    <div class="input-group mb-3">
+      <%= form.text_field :content, id: "message_content", class: "form-control", autocomplete: 'off' %>
+      <%= form.submit "Send", id: "button-addon2", class: "btn btn-outline-secondary" %>
+    </div>
   </div>
 <% end %>

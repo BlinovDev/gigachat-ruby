@@ -1,0 +1,158 @@
+// Import Bootstrap's SCSS
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+
+.main-app-block {
+  width: 65%;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #b299e5; /* Light violet background to match the chat theme */
+  color: white; /* White text for contrast */
+  text-align: center; /* Center the text */
+  padding: 15px 20px; /* Add padding for breathing room */
+  font-size: 1.5em; /* Increase font size for emphasis */
+  font-weight: bold; /* Bold text for the header */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+  max-height: 10vh;
+}
+
+/* Chat container styles */
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  margin: 0 auto;
+  background-color: #f3e6ff; /* light violet background */
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header {
+  background-color: #d4b3ff;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 1.5em;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat message area styles */
+.chat-messages {
+  flex: 1;
+  padding: 10px 20px;  /* Adjust padding to match the alignment */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto; /* Enable scrolling */
+  background-color: #f8f3ff;
+}
+
+/* Scroll to bottom automatically */
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background-color: #c2a3f0;
+  border-radius: 10px;
+}
+
+/* Styles for own messages (right aligned, darker tone) */
+.own-message {
+  align-self: flex-end;
+  background-color: #b299e5; /* darker violet tone for own messages */
+  color: white;
+  padding: 10px 15px;
+  border-radius: 15px 15px 0 15px;
+  word-wrap: break-word;
+  font-size: 1em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 10%;
+  max-width: 60%; /* Limit message width for readability */
+  width: auto; /* Auto width based on content */
+  word-wrap: break-word; /* Ensure long words break onto a new line */
+}
+
+/* Styles for other people's messages (left aligned) */
+.other-person-message {
+  align-self: flex-start;
+  background-color: #d8bfff; /* light violet for other person */
+  color: #4a4a4a; /* dark text for readability */
+  padding: 10px 15px;
+  border-radius: 15px 15px 15px 0;
+  font-size: 1em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 10%;
+  max-width: 60%;
+  width: auto;
+  word-wrap: break-word;
+}
+
+///* Input section */
+.chat-input {
+  display: flex;
+  padding: 15px;
+  background-color: #e4d0fc; /* matching header color */
+  border-top: 1px solid #c2a3f0;
+}
+
+
+
+
+
+
+
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Align logo to the left and links to the right */
+  align-items: center; /* Vertically center content */
+  background-color: #b299e5; /* Light violet background */
+  padding: 15px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Logo container (logo image + text) */
+.logo-container {
+  display: flex;
+  align-items: center; /* Vertically center the image and text */
+  gap: 10px; /* Space between logo and text */
+}
+
+/* Logo image */
+.logo {
+  max-height: 70px; /* Limit the height of the image */
+  width: auto;  /* Maintain aspect ratio */
+}
+
+/* Logo text next to the image */
+.logo-text {
+  font-size: 2.3em; /* Adjust font size for the text */
+  color: white;     /* White text color */
+  font-weight: bold; /* Make the text bold */
+}
+
+/* Navbar links (Profile/Logout or Sign Up/Login) */
+.navbar .nav-links {
+  display: flex;
+  gap: 15px; /* Space between the navigation links */
+}
+
+.navbar .nav-links a {
+  color: white; /* White text for the links */
+  text-decoration: none; /* Remove underline from links */
+  font-size: 1.4em;
+}
+
+.navbar .nav-links a:hover {
+  color: #7233cb; /* Light violet on hover */
+}
+
+.navbar .nav-links a:not(:last-child)::after {
+  content: "|"; /* Add separator between links */
+  color: white;
+  margin-left: 8px;
+}

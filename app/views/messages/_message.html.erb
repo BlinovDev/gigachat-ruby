@@ -1,8 +1,5 @@
-<div id="<%= dom_id message %>">
-
-  <% if message.user_id == current_user.id %>
-    <div style="background-color: darkseagreen; margin: 5px; width: 260px"><%= message.content %></div>
-  <% else %>
-    <div style="background-color: grey; margin: 5px; width: 260px"><%= message.content %></div>
-  <% end %>
-</div>
+<% if message.user_id == session[:user_id] %>
+  <div class="own-message"><%= message.content %></div>
+<% else %>
+  <div class="other-person-message"><%= message.content %></div>
+<% end %>
