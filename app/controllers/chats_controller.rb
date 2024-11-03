@@ -4,12 +4,14 @@ class ChatsController < ApplicationController
 
   # GET /chats or /chats.json
   def index
-    @chats = Chat.all
+    @chats = current_user.chats
+    @chat = Chat.new
   end
 
   # GET /chats/1 or /chats/1.json
   def show
     @message = Message.new
+    @chat_name = @chat.chat_with ? @chat.users.pluck(:nickname).without(current_user.nickname).first : @chat.name
   end
 
   # GET /chats/new
@@ -23,14 +25,21 @@ class ChatsController < ApplicationController
 
   # POST /chats or /chats.json
   def create
-    @chat = Chat.new(chat_params)
+    user = User.find_by(nickname: chat_params[:nickname])
+
+    if user&.nickname && user.id != current_user.id
+      @chat = Chat.new(name: user.nickname, chat_with: user.id)
+    end
 
     respond_to do |format|
       if @chat.save
+        ChatUser.create!(chat_id: @chat.id, user_id: user.id)
+        ChatUser.create!(chat_id: @chat.id, user_id: current_user.id)
+
         format.html { redirect_to @chat, notice: "Chat was successfully created." }
         format.json { render :show, status: :created, location: @chat }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :index, status: :unprocessable_entity }
         format.json { render json: @chat.errors, status: :unprocessable_entity }
       end
     end
@@ -68,6 +77,6 @@ class ChatsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def chat_params
-    params.require(:chat).permit(:name)
+    params.require(:chat).permit(:name, :nickname)
   end
 end

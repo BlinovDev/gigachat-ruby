@@ -1,7 +1,8 @@
-<div id="<%= dom_id chat %>">
+<div style="outline: 2px solid #9558e3; margin: 15px 2px;  background-color: #ccb5ef">
   <p>
     <strong>Name:</strong>
-    <%= chat.name %>
+    <%= chat.users.pluck(:nickname).without(current_user.nickname).first || chat.name %>
   </p>
 
+  <%= link_to "Show this chat", chat %>
 </div>
