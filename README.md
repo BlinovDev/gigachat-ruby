@@ -11,8 +11,9 @@ Its kind of dev sandbox to have better understanding of Turbo and Stimulus work 
 - [ ] Beautify Chats page;
 - [ ] Beautify Account page;
 - [ ] Fix alerts(now its standard, should be something fit too app style);
-- [ ] Develop chat permissions with invitation to chat logic;
+- [x] Develop chat permissions with invitation to chat logic;
 - [ ] Develop different style of Chat and messages for chats with two and with many people;
+- [ ] Optimise basic chats preventing many DB requests on chat loading;
 
 ## Database config
 
